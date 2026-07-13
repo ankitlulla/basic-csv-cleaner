@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Cleaner</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Papa Parse -->
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>CSV Cleaner</h1>
+
+        <p class="subtitle">
+            Clean CSV files before importing them into Excel or other tools.
+        </p>
+
+        <p class="privacy">
+            Files are processed locally in your browser.
+        </p>
+
+        <input type="file" id="csvFile" accept=".csv">
+
+        <br><br>
+
+        <button id="cleanBtn">
+            Preview & Clean
+        </button>
+
+        <br><br>
+
+        <div id="summary"></div>
+
+        <div id="tableContainer"></div>
+
+        <br>
+
+        <button id="downloadBtn" style="display:none;">
+            Download Cleaned CSV
+        </button>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
