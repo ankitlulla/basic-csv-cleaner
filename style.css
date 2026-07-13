@@ -135,3 +135,27 @@ tr:nth-child(even) {
     }
 
 }
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+    margin-top:15px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.card h3{
+    font-size:2rem;
+    color:#2563eb;
+}
+
+.card p{
+    margin-top:8px;
+    color:#666;
+}
