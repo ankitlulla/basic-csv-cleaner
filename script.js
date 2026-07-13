@@ -1,6 +1,9 @@
 const fileInput = document.getElementById("csvFile");
 const summary = document.getElementById("summary");
 const tableContainer = document.getElementById("tableContainer");
+const cleanBtn = document.getElementById("cleanBtn");
+
+let csvData = [];
 
 fileInput.addEventListener("change", () => {
 
@@ -8,25 +11,56 @@ fileInput.addEventListener("change", () => {
 
     if (!file) return;
 
-    summary.innerHTML = `
-        <p><strong>Selected File:</strong> ${file.name}</p>
-    `;
+    summary.innerHTML = `<p><strong>Selected File:</strong> ${file.name}</p>`;
 
     Papa.parse(file, {
         header: true,
         skipEmptyLines: true,
 
-        complete: function(results) {
-            displayTable(results.data);
+        complete: function (results) {
+            csvData = results.data;
+            displayTable(csvData);
         }
 
     });
 
 });
 
-function displayTable(data){
+cleanBtn.addEventListener("click", () => {
 
-    if(data.length === 0){
+    let cleanedData = [...csvData];
+
+    if (document.getElementById("duplicates").checked) {
+        cleanedData = removeDuplicates(cleanedData);
+    }
+
+    displayTable(cleanedData);
+
+});
+
+function removeDuplicates(data) {
+
+    const uniqueRows = [];
+    const seen = new Set();
+
+    data.forEach(row => {
+
+        const key = JSON.stringify(row);
+
+        if (!seen.has(key)) {
+            seen.add(key);
+            uniqueRows.push(row);
+        }
+
+    });
+
+    return uniqueRows;
+
+}
+
+function displayTable(data) {
+
+    if (data.length === 0) {
         tableContainer.innerHTML = "<p>No data found.</p>";
         return;
     }
@@ -35,17 +69,17 @@ function displayTable(data){
 
     table += "<tr>";
 
-    Object.keys(data[0]).forEach(column=>{
+    Object.keys(data[0]).forEach(column => {
         table += `<th>${column}</th>`;
     });
 
     table += "</tr>";
 
-    data.forEach(row=>{
+    data.forEach(row => {
 
         table += "<tr>";
 
-        Object.values(row).forEach(value=>{
+        Object.values(row).forEach(value => {
             table += `<td>${value}</td>`;
         });
 

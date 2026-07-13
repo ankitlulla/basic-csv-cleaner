@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,43 +10,75 @@
 
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 </head>
+
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <h1>CSV Cleaner</h1>
+        <h1>CSV Cleaner</h1>
 
-    <p>
-        Clean up CSV files before importing them into Excel or other spreadsheet tools.
-    </p>
+        <p>
+            Clean up CSV files before importing them into Excel or other spreadsheet tools.
+        </p>
 
-    <small>
-        Files are processed locally in your browser.
-    </small>
+        <small>
+            Files are processed locally in your browser.
+        </small>
 
-    <br><br>
+        <br><br>
 
-    <input type="file" id="csvFile" accept=".csv">
+        <input type="file" id="csvFile" accept=".csv">
 
-    <br><br>
+        <h3>Cleanup Options</h3>
 
-    <button id="cleanBtn">
-        Preview & Clean
-    </button>
+        <label>
+            <input type="checkbox" id="duplicates" checked>
+            Remove duplicate rows
+        </label>
 
-    <div id="summary"></div>
+        <br>
 
-    <div id="tableContainer"></div>
+        <label>
+            <input type="checkbox" id="emptyRows" checked>
+            Remove empty rows
+        </label>
 
-    <br>
+        <br>
 
-    <button id="downloadBtn" style="display:none;">
-        Download Cleaned CSV
-    </button>
+        <label>
+            <input type="checkbox" id="trim" checked>
+            Trim extra whitespace
+        </label>
 
-</div>
+        <br>
 
-<script src="script.js"></script>
+        <label>
+            <input type="checkbox" id="emptyColumns" checked>
+            Remove empty columns
+        </label>
+
+        <br><br>
+
+        <button id="cleanBtn">
+            Clean CSV
+        </button>
+
+        <br><br>
+
+        <div id="summary"></div>
+
+        <div id="tableContainer"></div>
+
+        <br>
+
+        <button id="downloadBtn" style="display:none;">
+            Download Cleaned CSV
+        </button>
+
+    </div>
+
+    <script src="script.js"></script>
 
 </body>
+
 </html>
