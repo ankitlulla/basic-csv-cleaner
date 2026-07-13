@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,77 +7,100 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <!-- Papa Parse -->
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 </head>
-
 <body>
 
-    <div class="container">
+<div class="container">
 
+    <header class="hero">
         <h1>CSV Cleaner</h1>
-
         <p>
-            Clean up CSV files before importing them into Excel or other spreadsheet tools.
+            Prepare CSV files before importing them into Excel,
+            Power BI, or other spreadsheet tools.
         </p>
-
         <small>
             Files are processed locally in your browser.
         </small>
+    </header>
 
-        <br><br>
+    <section class="upload-section">
 
-        <input type="file" id="csvFile" accept=".csv">
+        <h2>Upload CSV</h2>
 
-        <h3>Cleanup Options</h3>
+        <input
+            type="file"
+            id="csvFile"
+            accept=".csv">
+
+    </section>
+
+    <section class="options-section">
+
+        <h2>Cleanup Options</h2>
 
         <label>
-            <input type="checkbox" id="duplicates" checked>
+            <input
+                type="checkbox"
+                id="duplicates"
+                checked>
+
             Remove duplicate rows
         </label>
 
-        <br>
-
         <label>
-            <input type="checkbox" id="emptyRows" checked>
+            <input
+                type="checkbox"
+                id="emptyRows"
+                checked>
+
             Remove empty rows
         </label>
 
-        <br>
-
         <label>
-            <input type="checkbox" id="trim" checked>
+            <input
+                type="checkbox"
+                id="trim"
+                checked>
+
             Trim extra whitespace
         </label>
 
-        <br>
-
         <label>
-            <input type="checkbox" id="emptyColumns" checked>
+            <input
+                type="checkbox"
+                id="emptyColumns"
+                checked>
+
             Remove empty columns
         </label>
-
-        <br><br>
 
         <button id="cleanBtn">
             Clean CSV
         </button>
 
-        <br><br>
+    </section>
 
-        <div id="summary"></div>
+    <section id="summary"></section>
+
+    <section class="preview-section">
+
+        <h2>Preview</h2>
 
         <div id="tableContainer"></div>
 
-        <br>
+    </section>
 
-        <button id="downloadBtn" style="display:none;">
-            Download Cleaned CSV
-        </button>
+    <button
+        id="downloadBtn"
+        style="display:none;">
+        Download Cleaned CSV
+    </button>
 
-    </div>
+</div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
-
 </html>
